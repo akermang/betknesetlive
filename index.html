@@ -40,6 +40,8 @@
 
       html, body {
           height: 100%;
+          padding: 0;
+          margin: 0;
       }
 
       body {
@@ -120,7 +122,6 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        padding: 6px;
         overflow: auto;
         color: wheat;
         width: 100%;
@@ -269,6 +270,10 @@
         .cams-container P {
           min-width: 49%;
         }
+        
+        .main-container {
+          flex-direction: column;
+        }
       }
 
       @media (max-width: 768px) {
@@ -324,7 +329,7 @@
 
       @media (max-width: 530px) {
         iframe {
-            max-height: 33vh;
+            max-height: 30vh;
         }
         .mobile-btn {
           display: block;
