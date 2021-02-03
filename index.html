@@ -425,6 +425,8 @@
       </p>
     </footer>
     <script>
+      // updating src affter 59 minuts for new setion token
+      const timeLengh = 212400000;
       const camA = document.getElementById('camA');
       const camB = document.getElementById('camB');
      
@@ -433,9 +435,8 @@
         camB.src="https://g2.ipcamlive.com/player/player.php?alias=5f85a6f4e306b&autoplay=1&skin=white";
       };
       setInterval(() => {
-        console.log(camA)
         update();
-      }, 10000);
+      }, timeLengh);
     </script>
   </body>
 </html>
