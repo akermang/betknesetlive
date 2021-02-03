@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-   
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
@@ -38,10 +37,11 @@
         }
       }
 
-      html, body {
-          height: 100%;
-          padding: 0;
-          margin: 0;
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
       }
 
       body {
@@ -288,7 +288,7 @@
         .cams-container P {
           min-width: 49%;
         }
-        
+
         .main-container {
           flex-direction: column;
         }
@@ -347,7 +347,7 @@
 
       @media (max-width: 530px) {
         iframe {
-            max-height: 30vh;
+          max-height: 30vh;
         }
         .mobile-btn {
           display: block;
@@ -390,13 +390,12 @@
   </head>
 
   <body>
-    <header>
-    </header>
+    <header></header>
     <nav>
       <div class="">
         <div class="logo-container">
           <a class="logo-link" href="http://www.masorti.org.il/rehovot">
-          <img class="logo" src="./עדת שלום.jpeg">
+            <img class="logo" src="./עדת שלום.jpeg" />
           </a>
         </div>
       </div>
@@ -408,31 +407,46 @@
         <!-- <p>
           השידור הסתיים
         </p> -->
-        <iframe id="camA" src="https://g2.ipcamlive.com/player/player.php?alias=5f85a6b139efe&autoplay=1&skin=white"  width="640" height="360"
-        frameborder="0" allowfullscreen></iframe>
-        <iframe id="camB" src="https://g2.ipcamlive.com/player/player.php?alias=5f85a6f4e306b&autoplay=1&skin=white"  width="640" height="360"
-        frameborder="0" allowfullscreen></iframe>
+        <iframe
+          id="camA"
+          src="https://g2.ipcamlive.com/player/player.php?alias=5f85a6b139efe&autoplay=1&skin=white"
+          width="640"
+          height="360"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+        <iframe
+          id="camB"
+          src="https://g2.ipcamlive.com/player/player.php?alias=5f85a6f4e306b&autoplay=1&skin=white"
+          width="640"
+          height="360"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
       </div>
-      
     </div>
 
-
-    </div>
-    
     <footer>
-      <p style="text-align: center;">
-        <a style="color: #9a988a; font-size: 13px;" href="https://beachcam.co.il/index.html">powered by: Beach Cam Israel</a>
+      <p style="text-align: center">
+        <a
+          style="color: #9a988a; font-size: 13px"
+          href="https://beachcam.co.il/index.html"
+          >powered by: Beach Cam Israel</a
+        >
       </p>
     </footer>
     <script>
       // updating src affter 59 minuts for new setion token
-      const timeLengh = 212400000;
-      const camA = document.getElementById('camA');
-      const camB = document.getElementById('camB');
-     
-      const update = () =>{
-        camA.src="https://g2.ipcamlive.com/player/player.php?alias=5f85a6b139efe&autoplay=1&skin=white";
-        camB.src="https://g2.ipcamlive.com/player/player.php?alias=5f85a6f4e306b&autoplay=1&skin=white";
+      const timeLengh = 3000000;
+      const camA = document.getElementById("camA");
+      const camB = document.getElementById("camB");
+      const clicker = document.getElementById("clicker");
+
+      const update = () => {
+        camA.src =
+          "https://g2.ipcamlive.com/player/player.php?alias=5f85a6b139efe&autoplay=1&skin=white";
+        camB.src =
+          "https://g2.ipcamlive.com/player/player.php?alias=5f85a6f4e306b&autoplay=1&skin=white";
       };
       setInterval(() => {
         update();
