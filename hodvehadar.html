@@ -278,6 +278,10 @@
         margin: 0 auto;
         max-width: 800px;
       }
+      
+      .logo-small {
+        display: none;
+      }
 
       .logo-link {
         width: 100%;
@@ -348,6 +352,16 @@
       }
 
       @media (max-width: 530px) {
+        
+        .logo-small {
+          display: block;
+          padding: 5px;
+        }
+        
+        .logo-larg {
+          display: none;
+        }
+        
         iframe {
           max-height: 43vh;
         }
@@ -407,7 +421,8 @@
       <div class="">
         <div class="logo-container">
           <a class="logo-link" href="http://hodvehadar.org">
-            <img class="logo" src="./hodvehadar-logo.png" />
+            <img class="logo logo-larg" src="./hodvehadar-logo.png" />
+            <img class="logo logo-small" src="http://hodvehadar.org/wp-content/themes/hewphvh002/images/logo-312947695.png" />
           </a>
         </div>
       </div>
