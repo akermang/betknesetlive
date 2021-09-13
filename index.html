@@ -348,11 +348,13 @@
       .refresh-btn {
         float: right;
         margin-right: 30px;
+        background-color: #77d4d4;
+        border-radius: 7px;
+        border: none;
       }
 
       .refresh-btn:hover {
         cursor: pointer;
-        background-color: #77d4d4;
       }
 
       @media (max-width: 530px) {
@@ -449,6 +451,7 @@
     <script>
       // updating src affter 50 minuts for new setion token
       const timeLengh = 3000000;
+      // const topWindow = () => window.scrollTo({ top: 0, behavior: 'smooth' });
       const camA = document.getElementById("camA");
       const camB = document.getElementById("camB");
       const update = () => {
@@ -456,6 +459,7 @@
           "https://g2.ipcamlive.com/player/player.php?alias=5f85a6b139efe&autoplay=1&skin=white&hidelink=true&disablereportbutton=true";
         camB.src =
           "https://g2.ipcamlive.com/player/player.php?alias=5f85a6f4e306b&autoplay=1&skin=white&hidelink=true&disablereportbutton=true";
+          // topWindow();
       };
       setInterval(() => {
         update();
