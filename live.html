@@ -130,7 +130,7 @@
         overflow: auto;
         color: wheat;
         width: 100%;
-        /* max-width: 800px; */
+        max-width: 400px;
         margin: 0px auto;
         position: relative;
       }
@@ -139,18 +139,19 @@
         position: absolute;
         color: white;
         top: 0%;
-        left: 19%;
-        font-size: 18px;
+        left: 0%;
+        font-size: 14px;
         z-index: 1;
         background-color: black;
         height: 50px;
         padding: 0 1em;
+        width: 38%;
+
       }
 
       .cam-title.cam-title-right {
         left: unset;
-        right: 19%;
-        width: 16vw;
+        right: 0;
       }
 
       .cam-title.subTitle {
@@ -325,6 +326,13 @@
         background-color: black;
       }
 
+      .poster-container.poster-container-full {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 1
+      }
+
       @media (max-width: 914px) {
         .zion-poster {
           width: 100%;
@@ -343,7 +351,7 @@
           width: 140px;
         }
         .cam-title {
-          font-size: 14px;
+          font-size: 13px;
         }
         h1,
         h2 {
@@ -485,9 +493,9 @@
       <p>זמן ההפעלה לפני שבת - אנחנו ממליצים להכנס לעמוד זה כרבע שעה לפני כניסת השבת ללחוץ על כפתור הרמקול בנגן ולהגדיל את המסך</p>
     </div>
     <div class="main-container">
-      <!-- <div id="cam-title" class="cam-title">  להאזנה </div> -->
-      <!-- <div id="cam-title-right" class="cam-title cam-title-right">  </div> -->
       <div id="live-container" class="cams-container">
+      <div id="cam-title" class="cam-title">  להאזנה </div>
+      <div id="cam-title-right" class="cam-title cam-title-right">  </div>
           <iframe
           id="camA"
           class="partizan-player"
