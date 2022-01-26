@@ -205,6 +205,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         /* min-height: 70%; */
       }
 
@@ -302,7 +303,17 @@
         left: 5%;
       }
 
+      .zion-poster {
+        width: 75%;
+        height: 90%;
+        position: absolute;
+        bottom: 0;
+      }
+
       @media (max-width: 914px) {
+        .zion-poster {
+          width: 100%;
+        }
         .cams-container P {
           min-width: 49%;
         }
@@ -371,6 +382,10 @@
       }
 
       @media (max-width: 530px) {
+
+        .zion-poster{
+          height: 86%;
+        }
 
         .position-box {
           display: none;
@@ -459,17 +474,22 @@
     <div class="main-container">
       <div id="cam-title" class="cam-title"></div>
       <div id="live-container" class="cams-container">
+      </div>
+      <img class="zion-poster" src="silent_img.jpg"/>
+      <iframe
+      id="camA"
+      src="https://login.partizancloud.com/rest/CloudLink/html/20677/a7cd0493a8c8b767b33c245190b9dc79eb40d375e102c51042012ca4b2d1bb19?stream=main&lang=en&autoplay=true&button_color=19ACE4"
+      width="640"
+      height="360"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+      
+      </div>
         <!-- <p>
           השידור הסתיים
         </p> -->
-        <iframe
-          id="camA"
-          src="https://login.partizancloud.com/rest/CloudLink/html/20677/a7cd0493a8c8b767b33c245190b9dc79eb40d375e102c51042012ca4b2d1bb19?stream=main&lang=en&autoplay=true&button_color=19ACE4"
-          width="640"
-          height="360"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
+
         <!-- <iframe src="https://login.partizancloud.com/rest/CloudLink/html/20677/a7cd0493a8c8b767b33c245190b9dc79eb40d375e102c51042012ca4b2d1bb19?stream=sub&lang=en&autoplay=true&button_color=19ACE4" allowfullscreen="true" width="640" height="360" frameborder="0"></iframe> -->
         <!-- <iframe
           id="camB"
