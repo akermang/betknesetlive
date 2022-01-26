@@ -138,10 +138,19 @@
       .cam-title {
         position: absolute;
         color: white;
-        top: 5%;
-        left: 4%;
-        font-size: 22px;
+        top: 0%;
+        left: 19%;
+        font-size: 18px;
         z-index: 1;
+        background-color: black;
+        height: 50px;
+        padding: 0 1em;
+      }
+
+      .cam-title.cam-title-right {
+        left: unset;
+        right: 19%;
+        width: 16vw;
       }
 
       .cam-title.subTitle {
@@ -206,6 +215,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        max-width: 1080px;
         /* min-height: 70%; */
       }
 
@@ -303,11 +313,16 @@
         left: 5%;
       }
 
+      .poster-container {
+        text-align: center;
+      }
+
       .zion-poster {
         width: 75%;
-        height: 90%;
-        position: absolute;
-        bottom: 0;
+      }
+
+      .partizan-player {
+        background-color: black;
       }
 
       @media (max-width: 914px) {
@@ -328,7 +343,7 @@
           width: 140px;
         }
         .cam-title {
-          font-size: 19px;
+          font-size: 14px;
         }
         h1,
         h2 {
@@ -341,16 +356,18 @@
           width: 140px;
         }
 
+        .cam-title.cam-title-right {
+        right: 0%;
+      }
+
         .cam-title {
-          font-size: 19px;
-          left: 5%;
+          font-size: 14px;
+          left: 0%;
         }
       }
 
       @media (max-width: 599px) {
-        .main-container{
-          min-height: 50%;
-        }
+ 
         .logo {
           max-width: 200px;
         }
@@ -382,10 +399,6 @@
       }
 
       @media (max-width: 530px) {
-
-        .zion-poster{
-          height: 86%;
-        }
 
         .position-box {
           display: none;
@@ -472,15 +485,16 @@
       <p>זמן ההפעלה לפני שבת - אנחנו ממליצים להכנס לעמוד זה כרבע שעה לפני כניסת השבת ללחוץ על כפתור הרמקול בנגן ולהגדיל את המסך</p>
     </div>
     <div class="main-container">
-      <div id="cam-title" class="cam-title"></div>
+      <div id="cam-title" class="cam-title">  להאזנה --></div>
+      <div id="cam-title-right" class="cam-title cam-title-right">  </div>
       <div id="live-container" class="cams-container">
       </div>
-      <img class="zion-poster" src="silent_img.jpg"/>
       <iframe
       id="camA"
+      class="partizan-player"
       src="https://login.partizancloud.com/rest/CloudLink/html/20677/a7cd0493a8c8b767b33c245190b9dc79eb40d375e102c51042012ca4b2d1bb19?stream=main&lang=en&autoplay=true&button_color=19ACE4"
       width="640"
-      height="360"
+      height="50px"
       frameborder="0"
       allowfullscreen
     ></iframe>
@@ -500,6 +514,10 @@
           allowfullscreen
         ></iframe> -->
       </div>
+    </div>
+
+    <div class="poster-container">
+       <img class="zion-poster" src="silent_img.jpg"/>
     </div>
     <p style="color: #29b2d4; font-size: 18px; font-weight: bold; padding: 0 10px;">תפילות ציון משודרות בשידור חי מאולם התפילה בבית הספר גאולים בירושלים</p>
 
