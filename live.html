@@ -319,7 +319,8 @@
       }
 
       .zion-poster {
-        width: 75%;
+        width: 100%;
+        max-height: 100vh;
       }
 
       .partizan-player {
@@ -510,7 +511,7 @@
       </div>
     </div>
 
-    <div class="poster-container">
+    <div class="poster-container" id="poster-container" onclick="goFullscrean()" ondblclick="exFull()">
        <img class="zion-poster" src="silent_img.jpg"/>
     </div>
     <p style="color: #29b2d4; font-size: 18px; font-weight: bold; padding: 0 10px;">תפילות ציון משודרות בשידור חי מאולם התפילה בבית הספר גאולים בירושלים</p>
@@ -536,7 +537,15 @@
       // updating src affter 50 minuts for new setion token
       const timeLengh = 30000;
       const camA = document.getElementById("camA");
+      const poster = document.getElementById("poster-container");
+
     //   const camB = document.getElementById("camB");
+      const goFullscrean = () => {
+        poster.classList.add("poster-container-full");
+      }
+      const exFull = () => {
+        poster.classList.remove("poster-container-full");
+      }
       const update = () => {
         camA.src =
           "https://login.partizancloud.com/rest/CloudLink/html/20677/a7cd0493a8c8b767b33c245190b9dc79eb40d375e102c51042012ca4b2d1bb19?stream=main&lang=en&autoplay=true&button_color=19ACE4";
