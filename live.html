@@ -508,7 +508,7 @@
           <iframe
           id="camA"
           class="partizan-player"
-          src="https://login.partizancloud.com/rest/CloudLink/html/20677/a7cd0493a8c8b767b33c245190b9dc79eb40d375e102c51042012ca4b2d1bb19?stream=main&lang=en&autoplay=true&button_color=19ACE4"
+          src="https://login.partizancloud.com/rest/CloudLink/html/83510/ec979951550194375d8e8da169b2ec73e7b28d4c07884cafe127087db5a18a85?stream=main&lang=en&autoplay=true&button_color=19ACE4"
           width="640"
           height="150"
           frameborder="0"
@@ -541,7 +541,7 @@
     </footer>
     <script>
       // updating src affter 50 minuts for new setion token
-      const timeLengh = 30000;
+      const timeLengh = 5400000;
       const camA = document.getElementById("camA");
       const poster = document.getElementById("poster-container");
       const posterImg = document.getElementById("zion-poster");
@@ -556,14 +556,14 @@
         posterImg.classList.remove("fullWidth");
       }
       const update = () => {
-        camA.src =
-          "https://login.partizancloud.com/rest/CloudLink/html/20677/a7cd0493a8c8b767b33c245190b9dc79eb40d375e102c51042012ca4b2d1bb19?stream=main&lang=en&autoplay=true&button_color=19ACE4";
+        camA.src ="https://login.partizancloud.com/rest/CloudLink/html/83510/ec979951550194375d8e8da169b2ec73e7b28d4c07884cafe127087db5a18a85?stream=main&lang=en&autoplay=true&button_color=19ACE4"
+          // "https://login.partizancloud.com/rest/CloudLink/html/83507/5634b4bea98764df08dd489d054849472593a862dc33c29b6125d35e4999e662?stream=main&lang=en&autoplay=true&button_color=19ACE4?stream=main&lang=en&autoplay=true&button_color=19ACE4";
         // camB.src =
         //   "https://g2.ipcamlive.com/player/player.php?alias=5f85a6f4e306b&autoplay=1&skin=white";
       };
-      // setInterval(() => {
-      //   update();
-      // }, timeLengh);
+      setInterval(() => {
+        update();
+      }, timeLengh);
     </script>
   </body>
 </html>
