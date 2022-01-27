@@ -321,8 +321,12 @@
       }
 
       .zion-poster {
-        width:90%;
+        width:65%;
         max-height: 100vh;
+      }
+
+      .zion-poster.fullWidth {
+        width: 100%;
       }
 
       .partizan-player {
@@ -514,7 +518,7 @@
     </div>
 
     <div class="poster-container" id="poster-container" ondblclick="goFullscrean()" onclick="exFull()">
-       <img class="zion-poster" src="silent_img.jpg"/>
+       <img class="zion-poster" id="zion-poster" src="silent_img.jpg"/>
     </div>
     <p style="color: #29b2d4; font-size: 18px; font-weight: bold; padding: 0 10px;">תפילות ציון משודרות בשידור חי מאולם התפילה בבית הספר גאולים בירושלים</p>
 
@@ -540,13 +544,16 @@
       const timeLengh = 30000;
       const camA = document.getElementById("camA");
       const poster = document.getElementById("poster-container");
+      const posterImg = document.getElementById("zion-poster");
 
     //   const camB = document.getElementById("camB");
       const goFullscrean = () => {
         poster.classList.add("poster-container-full");
+        posterImg.classList.add("fullWidth");
       }
       const exFull = () => {
         poster.classList.remove("poster-container-full");
+        posterImg.classList.remove("fullWidth");
       }
       const update = () => {
         camA.src =
