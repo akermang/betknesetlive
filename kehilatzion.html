@@ -1,5 +1,3 @@
-
-  
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -11,13 +9,27 @@
       type="image/png"
       href="https://akermang.github.io/WeatherApp/sun-favicon.png"
     />
-    <title>קהילת ציון |  שידור חי | ירושליים</title>
+    <title>קהילת ציון | שידור חי | ירושליים</title>
     <meta
       http-equiv="Cache-Control"
       content="no-cache, no-store, must-revalidate"
     />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SVVN9CTB0T"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-SVVN9CTB0T");
+    </script>
     <style>
       @keyframes loader-spin {
         0% {
@@ -281,7 +293,7 @@
         margin: 0 auto;
         max-width: 150px;
       }
-      
+
       .logo-small {
         display: none;
       }
@@ -337,7 +349,7 @@
       }
 
       @media (max-width: 599px) {
-        .main-container{
+        .main-container {
           min-height: 50%;
         }
         .logo {
@@ -371,20 +383,19 @@
       }
 
       @media (max-width: 530px) {
-
         .position-box {
           display: none;
         }
-        
+
         .logo-small {
           display: block;
           padding: 5px 50px;
         }
-        
+
         .logo-larg {
           display: none;
         }
-        
+
         iframe {
           max-height: 43vh;
         }
@@ -425,12 +436,12 @@
           position: absolute;
         }
       }
-        
+
       @media (max-width: 430px) {
         iframe {
           max-height: 33vh;
         }
-        
+
         /* .logo {
           height: 50px;
         } */
@@ -444,17 +455,35 @@
       <div class="">
         <div class="logo-container">
           <a class="logo-link" href="https://www.zion-jerusalem.org.il/">
-            <img class="logo logo-larg" src="https://static.wixstatic.com/media/74ae2d_4ba87bad7f654095b20b135b413fd5cd~mv2.png/v1/fill/w_143,h_74,al_c,q_85,usm_0.66_1.00_0.01/LogoZionHi.webp" />
-            <img class="logo logo-small" src="https://static.wixstatic.com/media/74ae2d_4ba87bad7f654095b20b135b413fd5cd~mv2.png/v1/fill/w_143,h_74,al_c,q_85,usm_0.66_1.00_0.01/LogoZionHi.webp" />
+            <img
+              class="logo logo-larg"
+              src="https://static.wixstatic.com/media/74ae2d_4ba87bad7f654095b20b135b413fd5cd~mv2.png/v1/fill/w_143,h_74,al_c,q_85,usm_0.66_1.00_0.01/LogoZionHi.webp"
+            />
+            <img
+              class="logo logo-small"
+              src="https://static.wixstatic.com/media/74ae2d_4ba87bad7f654095b20b135b413fd5cd~mv2.png/v1/fill/w_143,h_74,al_c,q_85,usm_0.66_1.00_0.01/LogoZionHi.webp"
+            />
           </a>
         </div>
       </div>
     </nav>
     <div class="position-box">
-      <p>שמירת שבת - הערוץ אינו דורש שום נגיעה במהלך השבת, ויפעל במתכונת שומרת שבת ויום טוב</p>
-      <p>שומר מסך - הקפידו לפני ההפעלה לוודא שביטלתם את הגדרת שומר המסך שלכם כדי שהמחשב לא ייכנס למצב שינה</p>
-      <p>חיבור לטעינה - הקפידו שהמחשב שבו יופעל הערוץ מחובר לטעינה ולא ינותק באמצעות שעון שבת</p>
-      <p>זמן ההפעלה לפני שבת - אנחנו ממליצים להכנס לעמוד זה כרבע שעה לפני כניסת השבת ללחוץ על כפתור הרמקול בנגן ולהגדיל את המסך</p>
+      <p>
+        שמירת שבת - הערוץ אינו דורש שום נגיעה במהלך השבת, ויפעל במתכונת שומרת
+        שבת ויום טוב
+      </p>
+      <p>
+        שומר מסך - הקפידו לפני ההפעלה לוודא שביטלתם את הגדרת שומר המסך שלכם כדי
+        שהמחשב לא ייכנס למצב שינה
+      </p>
+      <p>
+        חיבור לטעינה - הקפידו שהמחשב שבו יופעל הערוץ מחובר לטעינה ולא ינותק
+        באמצעות שעון שבת
+      </p>
+      <p>
+        זמן ההפעלה לפני שבת - אנחנו ממליצים להכנס לעמוד זה כרבע שעה לפני כניסת
+        השבת ללחוץ על כפתור הרמקול בנגן ולהגדיל את המסך
+      </p>
     </div>
     <div class="main-container">
       <div id="cam-title" class="cam-title"></div>
@@ -480,14 +509,24 @@
         ></iframe> -->
       </div>
     </div>
-    <p style="color: #29b2d4; font-size: 18px; font-weight: bold; padding: 0 10px;">תפילות ציון משודרות בשידור חי מאולם התפילה בבית הספר גאולים בירושלים</p>
+    <p
+      style="
+        color: #29b2d4;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 0 10px;
+      "
+    >
+      תפילות ציון משודרות בשידור חי מאולם התפילה בבית הספר גאולים בירושלים
+    </p>
 
     <footer>
       <p style="text-align: center">
         <a
           style="color: #9a988a; font-size: 13px"
           href="https://beachcam.co.il/index.html"
-          >powered by: Beach Cam Israel פתרונות לשידור חי בכל מקום info@beachcam.co.il</a
+          >powered by: Beach Cam Israel פתרונות לשידור חי בכל מקום
+          info@beachcam.co.il</a
         >
       </p>
       <!-- <p style="text-align: center">
@@ -497,13 +536,13 @@
           ></a
         >
       </p> -->
-       <!-- <p style="color: #9a988a; font-size: 13px">info@beachcam.co.il</p> -->
+      <!-- <p style="color: #9a988a; font-size: 13px">info@beachcam.co.il</p> -->
     </footer>
     <script>
       // updating src affter 50 minuts for new setion token
       const timeLengh = 3000000;
       const camA = document.getElementById("camA");
-    //   const camB = document.getElementById("camB");
+      //   const camB = document.getElementById("camB");
       const update = () => {
         camA.src =
           "https://g2.ipcamlive.com/player/player.php?alias=61e587e9d093b&skin=white&hidelink=true&disablereportbutton=true&disableautofullscreen=1&disablezoombutton=1&disablevideofit=1&disableframecapture=1&disabletimelapseplayer=1&disabledownloadbutton=1&disableplaybackspeedbutton=1&disableuserpause=1&autoplay=1";
