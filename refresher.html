@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ניווט וריענון IFRAME</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* יישור למעלה */
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 20px;
+            width: 90%;
+            max-width: 800px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #statusMessage {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            min-height: 30px; /* כדי למנוע קפיצות בעיצוב */
+        }
+        .iframe-container {
+            display: flex;
+            flex-wrap: wrap; /* מאפשר ל-iframes לרדת שורה */
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px; /* רוחב מקסימלי לכל המכולה */
+        }
+        iframe {
+            width: 100%; /* ברירת מחדל לרוחב מלא, ישתנה ב-JS */
+            height: 400px; /* גובה קבוע ל-iframe */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: none; /* נסתר בהתחלה ויוצג בלחיצה */
+        }
+
+        /* עיצוב עבור שני iframes זה לצד זה */
+        .iframe-container.two-columns iframe {
+            width: calc(50% - 10px); /* חצי רוחב פחות רווח */
+            min-width: 300px; /* רוחב מינימלי למניעת התכווצות יתר */
+        }
+
+        /* עיצוב עבור iframe יחיד במידה ורק אחד פעיל */
+        .iframe-container.one-column iframe {
+             width: 80%; /* אחוז רוחב גדול יותר */
+             max-width: 600px; /* רוחב מקסימלי סביר */
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ניווט וריענון IFRAME TESTER</h1>
+        <button id="button1">פתח ורענן עמוד עדת שלום</button>
+        <button id="button2">פתח ורענן עמוד הוד והדר</button>
+        <div id="statusMessage"></div>
+    </div>
+
+    <div class="iframe-container" id="iframeContainer">
+        <iframe id="iframe1" name="iframe1" src="about:blank"></iframe>
+        <iframe id="iframe2" name="iframe2" src="about:blank"></iframe>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button1 = document.getElementById('button1');
+            const button2 = document.getElementById('button2');
+            const statusMessage = document.getElementById('statusMessage');
+            const iframe1 = document.getElementById('iframe1');
+            const iframe2 = document.getElementById('iframe2');
+            const iframeContainer = document.getElementById('iframeContainer');
+
+            const url1 = "https://akermang.github.io/betknesetlive/";
+            const url2 = "https://akermang.github.io/betknesetlive/hodvehadar.html";
+            const refreshCount = 16;
+            const refreshInterval = 5000; // 5 שניות
+
+            let activeIframes = 0; // מונה כמה iframes פעילים כרגע
+            const iframeIntervals = {}; // אובייקט לאחסון מזהי האינטרוולים עבור כל iframe
+
+            function refreshIframe(iframeElement, url, displayUrl, iframeId) {
+                // נקה כל אינטרוול קודם עבור iframe זה אם קיים
+                if (iframeIntervals[iframeId]) {
+                    clearInterval(iframeIntervals[iframeId]);
+                    delete iframeIntervals[iframeId];
+                }
+
+                iframeElement.src = url; // טוען את ה-URL ל-iframe
+                iframeElement.style.display = 'block'; // מציג את ה-iframe
+                
+                // ודא שלא נגדיל את activeIframes אם ה-iframe כבר היה פעיל
+                if (!iframeElement.dataset.isActive) {
+                    activeIframes++;
+                    iframeElement.dataset.isActive = 'true'; // סמן כפעיל
+                }
+                updateIframeContainerLayout();
+
+
+                let count = 0;
+                
+                const startRefresh = () => {
+                    // עדכן את ה-src כדי לטעון מחדש את ה-iframe
+                    // זו הדרך היחידה לרענן iframe צולב דומיינים ללא שגיאת SOP
+                    iframeElement.src = url + "?_=" + new Date().getTime(); // הוסף פרמטר קווארי ייחודי למניעת קאשינג
+                    
+                    statusMessage.textContent = `מרענן את ${displayUrl} (${count + 1} מתוך ${refreshCount})...`;
+                    
+                    count++;
+                    if (count >= refreshCount) {
+                        clearInterval(iframeIntervals[iframeId]);
+                        delete iframeIntervals[iframeId]; // נקה את האינטרוול מהאובייקט
+                        statusMessage.textContent = `הפעולות עבור ${displayUrl} בוצעו בהצלחה ${refreshCount} פעמים!`;
+                        setTimeout(() => { 
+                            // אם אין iframes אחרים פעילים, נקה את ההודעה.
+                            if (activeIframes === 0) { // בדוק שוב אם אף אחד לא פעיל
+                                statusMessage.textContent = '';
+                            }
+                        }, 5000); // נקה את ההודעה לאחר 5 שניות
+
+                        activeIframes--;
+                        iframeElement.dataset.isActive = 'false'; // סמן כלא פעיל
+
+                        // אם אף אחד לא פעיל, הסתר את ה-iframe
+                        if (activeIframes === 0) {
+                             iframeElement.style.display = 'none';
+                             iframeElement.src = 'about:blank'; // נקה את התוכן
+                        }
+                        updateIframeContainerLayout(); // עדכן את הפריסה
+                    }
+                };
+
+                // הרענון הראשון יקרה מיד, ואז כל 5 שניות
+                // יש לשים לב שהטעינה הראשונית של ה-src תתרחש מיד
+                // והלולאה תתחיל לספור ולרענן החל מהפעם השנייה.
+                // אם רוצים שהפעם הראשונה תהיה חלק מהלולאה, ניתן להתחיל את count מ-0
+                // ולהפעיל את startRefresh רק בתוך setInterval, ואז ה-iframe
+                // יתרענן בפעם הראשונה רק לאחר 5 שניות.
+                // כרגע, אני מפעיל את ה-src פעם אחת ידנית כדי שיראה תוכן מיד,
+                // ורק אז מתחיל את האינטרוול עבור 16 הרענונים הנוספים.
+                
+                // אם רוצים שגם הטעינה הראשונה תיחשב כרענון (1/16):
+                count = 0; // אתחל מונה
+                startRefresh(); // הפעל רענון ראשון
+                iframeIntervals[iframeId] = setInterval(startRefresh, refreshInterval);
+            }
+
+            function updateIframeContainerLayout() {
+                // הסתר את כל ה-iframes כדי להתחיל מדף נקי
+                iframe1.style.display = 'none';
+                iframe2.style.display = 'none';
+
+                let visibleIframes = 0;
+                if (iframe1.dataset.isActive === 'true') visibleIframes++;
+                if (iframe2.dataset.isActive === 'true') visibleIframes++;
+
+                if (visibleIframes === 1) {
+                    iframeContainer.classList.remove('two-columns');
+                    iframeContainer.classList.add('one-column');
+                    if (iframe1.dataset.isActive === 'true') {
+                        iframe1.style.display = 'block';
+                        iframe1.style.width = '80%';
+                        iframe1.style.maxWidth = '600px';
+                    } else if (iframe2.dataset.isActive === 'true') {
+                        iframe2.style.display = 'block';
+                        iframe2.style.width = '80%';
+                        iframe2.style.maxWidth = '600px';
+                    }
+                } else if (visibleIframes === 2) {
+                    iframeContainer.classList.remove('one-column');
+                    iframeContainer.classList.add('two-columns');
+                    iframe1.style.display = 'block';
+                    iframe2.style.display = 'block';
+                    iframe1.style.width = 'calc(50% - 10px)';
+                    iframe2.style.width = 'calc(50% - 10px)';
+                } else { // visibleIframes === 0
+                    iframeContainer.classList.remove('one-column', 'two-columns');
+                    // אם אין iframes פעילים, וודא שהם מוסתרים וה-src ריק
+                    iframe1.style.display = 'none';
+                    iframe1.src = 'about:blank';
+                    iframe2.style.display = 'none';
+                    iframe2.src = 'about:blank';
+                }
+            }
+
+
+            button1.addEventListener('click', () => refreshIframe(iframe1, url1, 'עמוד ראשי', 'iframe1'));
+            button2.addEventListener('click', () => refreshIframe(iframe2, url2, 'עמוד הוד והדר', 'iframe2'));
+
+            // וודא ש-iframes מוסתרים בהתחלה
+            iframe1.style.display = 'none';
+            iframe2.style.display = 'none';
+            iframe1.src = 'about:blank';
+            iframe2.src = 'about:blank';
+            updateIframeContainerLayout(); // עדכן את הפריסה בהתאם למצב ההתחלתי
+        });
+    </script>
+</body>
+</html>
